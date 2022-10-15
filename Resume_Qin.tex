@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+
+% ================ PACKAGES ====================
+
+\usepackage[reset, a4paper, margin=6mm, top=7mm, right=4mm]{geometry}
+% text alignment
+\usepackage{ragged2e}
+% loremipsum
+\usepackage{lipsum}
+% text color
+\usepackage{color}
+\usepackage{xcolor}
+% underline
+\usepackage{ulem}
+\usepackage{contour}
+% multiple columns
+\usepackage{paracol}
+% custom fonts
+\usepackage{fontspec}
+% paper bg
+\usepackage{eso-pic}
+% icons
+\usepackage{fontawesome5}
+% hyperlinks
+\usepackage{hyperref}
+% better itemize
+\usepackage{enumitem}
+
+% ================ SETTINGS ====================
+
+\setlist[itemize]{noitemsep, topsep=-2pt, leftmargin=2ex}
+
+\setromanfont{CormorantGaramond}
+\setsansfont{SourceSerifPro}
+\renewcommand{\familydefault}{\rmdefault}
+
+% no page numbers and the sorts
+\thispagestyle{empty}
+% no indentation at beginning of paragraph
+\parindent=0pt
+% for underline
+\renewcommand{\ULdepth}{3pt}
+\renewcommand{\ULthickness}{0.5pt}
+\contourlength{2.0pt}
+
+% for links
+\hypersetup{
+    colorlinks=false,
+    pdfborder = {0 0 0},
+}
+
+% no hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+% ================ MACROS ======================
+
+\newfontfamily\titlethin{CormorantGaramond-Light}
+\newfontfamily\titlethick{CormorantGaramond-Medium}
+\newfontfamily\titlebold{CormorantGaramond-Bold}
+\newfontfamily\normaltext{SourceSerifPro}
+
+\newcommand{\resumetitle}[3]{
+    \AddToShipoutPictureBG{
+        \AtPageUpperLeft {
+        \raisebox{-0.09\paperheight}{
+            \color{black!85}\rule{2\paperwidth}{\paperheight}}
+        }}
+    \begin{Center}
+        \begingroup
+        \titlethin
+        \color{black!10}\Huge{#1}
+        \titlethick
+        \color{black!5}\Huge{#2} \\
+        \vspace{2mm}
+        \textrm{\color{black!15}\Large{#3}}
+        \endgroup
+    \end{Center}
+    \vspace{7mm}
+}
+
+\newcommand{\betteruline}[1]{
+    \uline{#1}
+}
+
+\newcommand{\sectiontitle}[1]{
+    \begingroup
+        \titlebold
+        \betteruline{\Large\uppercase{#1}  }
+        \vspace{1.7mm}
+    \endgroup
+}
+
+\newcommand{\sectioncontent}[1]{
+    \begingroup
+        \begin{FlushLeft}
+        \vspace{-3mm}
+        \sffamily\small#1
+        \end{FlushLeft}
+    \endgroup
+    \vspace{2mm}
+}
+
+\newcommand{\job}[3]{
+    \begingroup
+        \textbf{\normalsize#1} \\
+        \small#2 \hfill\color{black!70}\small{#3}
+    \endgroup
+}
+
+\newcommand{\project}[2]{
+    \begingroup
+        \textbf{\normalsize#1}
+        \hfill\color{black!70}\small{#2}
+    \endgroup
+}
+
+\newcommand{\spacevv}{
+    \vspace{2mm}
+}
+
+\newcommand{\honor}[2]{
+    \textcolor{black!70}{#1} - #2 \\
+    \vspace{1.5mm}
+}
+
+\begin{document}
+    \resumetitle{Qin}{Wang} {
+        qinw@andrew.cmu.edu |
+        412-304-6050 
+    }
+
+    \columnratio{0.31}
+    \setlength{\columnsep}{7mm}
+    \begin{paracol}{2}
+
+    \sectiontitle{education}
+    \sectioncontent{
+        \textbf{\normalsize Carnegie Mellon University} \\
+        B.S. in Computer Science; Concentration in Machine Learning\\
+        \textcolor{black!70}{Aug 2021 – May 2024} \\
+        GPA: 4.0
+    }
+
+
+    \sectiontitle{Honors \& Awards}
+    \sectioncontent{
+        \honor{2021-2022}{Dean's List with High Honors }
+        \honor{2022}{Tapia Conference 2022 Scholarship}
+        \honor{2022}{Summer Undergraduate Research Apprenticeship}
+        \honor{2020}{The Singapore Science and Engineering Fair, Gold}
+        \honor{2018}{Singapore National Olympiad in Informatics, Silver}
+        \honor{2018}{Singapore Mathematical Olympiad, Silver}
+    }
+    \sectiontitle{Links}
+    \sectioncontent{
+        \faIcon{github-alt}\hspace{2mm}
+        \href{https://github.com/Bread-wq}{https://github.com/Bread-wq} \\
+        \faIcon{linkedin-in}\hspace{2.1mm} 
+        \href{https://www.linkedin.com/in/qin-wang-alicia}{www.linkedin.com/in/qin-wang-alicia} 
+    }
+      
+    \sectiontitle{Coursework}
+    \sectioncontent{
+         \honor{11-485}{Intro to Deep Learning}
+         \honor{15-330}{Intro to Computer Security}
+         \honor{15-213}{Intro to Computer Systems}
+         \honor{15-150}{Functional Programming}
+         \honor{15-195}{Competition Programming}
+    }
+    \sectiontitle{Skills}
+    \sectioncontent{
+        \textbf{Languages} \\
+        Python, C, C++, MATLAB, SML, Dafny\\
+        \textbf{Front-end}\\ HTML, CSS, React Native, Django, Bootstrap\\
+        \textbf{Back-end}\\ MongoDB, MySQL\\
+        \textbf{Machine Learning}\\ Numpy, Sklearn, PyTorch, Pandas, Wandb, OpenCV\\
+        \textbf{Data Visualization}\\
+        Matplotlib
+    }
+
+    \switchcolumn
+
+    \sectiontitle{Research Experience}
+    \sectioncontent{
+
+      \job{CMU Robotic Caregiving and Human Interaction lab }{Robotics Research Intern}{March 2022 – Present}
+      \begin{itemize}
+        \item Co-first author of paper in submission to 2023 IEEE International Conference on Robotics and Automation \href{https://arxiv.org/abs/2209.13097}{\textit{[Arxiv]}} 
+        \item Spearheaded design and creation of a wearable headband interface for controlling a mobile robot and piloted experiments to test its efficacy on 20 participants 
+        \item Created GUI using python Tkinter for video streaming via pyrealsense2 and speech recognition tool via Google Speech Recognition
+      \end{itemize}
+      \spacevv
+
+      \job{Singapore A*STAR Institute for Infocomm Research}{Machine Learning Intern}{June 2019 – July 2020}
+      \begin{itemize}
+        \item Co-first author of paper published in 42nd Annual International Conference of the IEEE Engineering in Medicine and Biology Society \href{https://ieeexplore.ieee.org/document/9175900}{\textit{[IEEE]}}  
+        \item Designed and conducted experiments to collect EEG data from 25 subjects to monitor stress level after 5 stress-relieving tasks
+        \item Performed data segmentation and bandpass filtering using MATLAB, selected features using Fisher Ratio 
+        \item Experimented with ML methods including SVM, LDA, logistic regression, trained a 4-class LDA classifier to detect stress levels
+      \end{itemize}
+      \spacevv
+
+      \job{Annual High School Mathematical Contest in Modeling}{Outstanding Award Winner}{November 2018 \& 2019} 
+    \begin{itemize}
+        \item Won top 1\% paper for 2 consecutive years in HiMCM, the largest international math modeling competition for high schools
+        \item Developed multi-objective optimization model to automatically adjust temperature of the house using autocorrelation analysis and Monte-Carlo-Tree-Search (2018 Problem B)
+        \item Devised strategies to place charging stations in different types of venues using queuing model (python SimPy) and discretized fluid cooling model (MATLAB), tested robustness of model on real life data (2019 Problem A)
+    \end{itemize}
+    } 
+
+
+    \sectiontitle{projects \& activities}
+    \sectioncontent{
+        \project{MyTorch}{August 2022 – Present}
+        \begin{itemize}
+            \item Constructing custom deep learning library for Intro to Deep Learning
+            \item Implemented forward pass, backpropagation, convolutional layers, pooling layers, downsampling and upsampling layers from scratch
+        \end{itemize}
+        \spacevv
+
+        \project{\href{example.com}{Winter Soldier}}{April 2022 – Present}
+        \begin{itemize}
+            \item Conceptualized design and construction of a multi-sensor autonomous snow cleaning robot built with Jetson nano, depth camera, and IMU
+            \item Enabled real time object detection with YOLOv5 computer vision model 
+            \item Received \$500 Small Helpful Research Grant (SHRG) from CMU robotics club
+        \end{itemize}
+        \spacevv
+        
+        \project{\href{https://github.com/hackcmu22-slow}{Take To Wake}}{September 2022}
+        \begin{itemize}
+            \item Top 2/52 teams at HackCMU 2022, with over 200 participants
+            \item Created gamified mobile app under 24 hours to help people get up on time by completing real life tasks using React Native, Firebase, Flask and Computer Vision
+        \end{itemize}
+        \spacevv
+        \project{\href{example.com}{Optiver Market Making Game}}{March 2022}
+        \begin{itemize}
+            \item 1st place at Optiver's Market Making Game 2022 for Price Estimation with over 150 participants
+            \item Performed statistical and mathematical analysis to estimate intrinsic value of provided contracts and deployed trading strategies to compete against 30 other teams
+        \end{itemize}
+        \spacevv
+        
+        \project{{RoboCup Soccer Competition}}{March 2017 - June 2019}
+        \begin{itemize}
+            \item Led a team of 4 to construct 2 omnidirectional autonomous soccer playing robots, used OpenCV for fast real time detection of passive ball 
+            \item Won 1st in light weight category in 2017, 1st in heavy weight category in 2018 
+            \item Represented Singapore in RoboCup international for 2 consecutive years
+        \end{itemize}
+        \spacevv
+
+    }
+
+    
+
+    \end{paracol}
+
+\end{document}
